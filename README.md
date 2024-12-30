@@ -2,6 +2,10 @@
 
 A React Native application that allows users to create and manage video diary entries. Built with Expo, this app enables users to import videos, crop specific segments, add metadata, and maintain a personal collection of video memories.
 
+## Demo
+
+![Video Diary App Demo](./assets/diary.gif)
+
 ## Features
 
 - Import videos from device gallery
@@ -9,7 +13,6 @@ A React Native application that allows users to create and manage video diary en
 - Add metadata (name and description) to videos
 - View and manage video collection
 - Edit video details
-- Beautiful and intuitive user interface
 
 ## Technologies Used
 
@@ -20,7 +23,7 @@ A React Native application that allows users to create and manage video diary en
 - FFmpeg (video processing)
 - NativeWind (styling)
 - React Hook Form & Zod (form handling)
-- Expo AV (video playback)
+- Expo Video (video playback)
 - Expo Image Picker (media selection)
 
 ## Prerequisites
@@ -36,7 +39,7 @@ A React Native application that allows users to create and manage video diary en
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/yourusername/video-diary-app.git
+   git clone https://github.com/mucahitdev/video-diary-app.git
    cd video-diary-app
    ```
 
@@ -84,11 +87,3 @@ A React Native application that allows users to create and manage video diary en
    - Open a video's details page
    - Tap the delete icon
    - Confirm deletion
-
-## Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
