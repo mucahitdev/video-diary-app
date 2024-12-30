@@ -1,8 +1,8 @@
 import { Ionicons } from '@expo/vector-icons';
 import { Link } from 'expo-router';
-import { View, Text, FlatList, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 
-import { VideoPlayer } from '../components/VideoPlayer';
+import { VideoList } from '../components/VideoList';
 import { useVideoStore } from '../store/useVideoStore';
 
 export default function HomeScreen() {
@@ -25,27 +25,7 @@ export default function HomeScreen() {
 
   return (
     <View className="flex-1 bg-gray-50">
-      <FlatList
-        data={videos}
-        keyExtractor={(item) => item.id}
-        contentContainerClassName="p-4 space-y-4"
-        renderItem={({ item }) => (
-          <Link href={`/details/${item.id}`} asChild>
-            <TouchableOpacity className="overflow-hidden rounded-lg bg-white shadow">
-              <VideoPlayer uri={item.uri} />
-              <View className="p-4">
-                <Text className="text-lg font-semibold">{item.name}</Text>
-                <Text className="text-gray-600" numberOfLines={2}>
-                  {item.description}
-                </Text>
-                <Text className="mt-2 text-sm text-gray-500">
-                  {new Date(item.createdAt).toLocaleDateString()}
-                </Text>
-              </View>
-            </TouchableOpacity>
-          </Link>
-        )}
-      />
+      <VideoList videos={videos} />
       <Link href="/modal" asChild>
         <TouchableOpacity className="absolute bottom-6 right-6 h-14 w-14 items-center justify-center rounded-full bg-blue-500 shadow-lg">
           <Ionicons name="add" size={30} color="white" />
