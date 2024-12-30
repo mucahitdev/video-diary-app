@@ -48,7 +48,7 @@ export default function ModalScreen() {
     if (!croppedVideo) return;
 
     try {
-      await addVideo({
+      addVideo({
         uri: croppedVideo,
         ...metadata,
       });

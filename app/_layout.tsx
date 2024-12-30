@@ -1,6 +1,5 @@
 import '../global.css';
 
-import { ThemeProvider, DarkTheme, DefaultTheme } from '@react-navigation/native';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Stack } from 'expo-router';
 import { useColorScheme } from 'react-native';
@@ -12,13 +11,33 @@ export default function RootLayout() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-        <Stack>
-          <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-          <Stack.Screen name="modal" options={{ presentation: 'modal' }} />
-          <Stack.Screen name="details/[id]" options={{ title: 'Video Details' }} />
-        </Stack>
-      </ThemeProvider>
+      <Stack
+        screenOptions={{
+          headerStyle: {
+            backgroundColor: colorScheme === 'dark' ? '#000' : '#fff',
+          },
+          headerTintColor: colorScheme === 'dark' ? '#fff' : '#000',
+        }}>
+        <Stack.Screen
+          name="index"
+          options={{
+            title: 'Video Diary',
+          }}
+        />
+        <Stack.Screen
+          name="modal"
+          options={{
+            presentation: 'modal',
+            title: 'New Video Entry',
+          }}
+        />
+        <Stack.Screen
+          name="details/[id]"
+          options={{
+            title: 'Video Details',
+          }}
+        />
+      </Stack>
     </QueryClientProvider>
   );
 }

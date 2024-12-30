@@ -2,17 +2,17 @@ import { Ionicons } from '@expo/vector-icons';
 import { Link } from 'expo-router';
 import { View, Text, FlatList, TouchableOpacity } from 'react-native';
 
-import { VideoPlayer } from '../../components/VideoPlayer';
-import { useVideoStore } from '../../store/useVideoStore';
+import { VideoPlayer } from '../components/VideoPlayer';
+import { useVideoStore } from '../store/useVideoStore';
 
-export default function TabOneScreen() {
+export default function HomeScreen() {
   const videos = useVideoStore((state) => state.videos);
 
   if (videos.length === 0) {
     return (
       <View className="flex-1 items-center justify-center p-4">
         <Text className="mb-4 text-center text-lg text-gray-600">
-          No videos yet. Add your first video diary entry!s
+          No videos yet. Add your first video diary entry!
         </Text>
         <Link href="/modal" asChild>
           <TouchableOpacity className="rounded-lg bg-blue-500 px-6 py-3">
