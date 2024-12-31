@@ -4,16 +4,17 @@ import { FFmpegKit, ReturnCode } from 'ffmpeg-kit-react-native';
 
 interface CropVideoParams {
   sourceUri: string;
+  startTime: number;
   duration?: number;
 }
 
 export function useVideoOperations() {
   const cropVideoMutation = useMutation({
-    mutationFn: async ({ sourceUri, duration = 5 }: CropVideoParams) => {
+    mutationFn: async ({ sourceUri, startTime, duration = 5 }: CropVideoParams) => {
       const outputUri = `${FileSystem.cacheDirectory}cropped_${Date.now()}.mp4`;
 
       const session = await FFmpegKit.execute(
-        `-i "${sourceUri}" -t ${duration} -c:v copy -c:a copy "${outputUri}"`
+        `-ss ${startTime} -i "${sourceUri}" -t ${duration} -c:v copy -c:a copy "${outputUri}"`
       );
 
       const returnCode = await session.getReturnCode();

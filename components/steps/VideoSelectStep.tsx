@@ -2,7 +2,7 @@ import * as ImagePicker from 'expo-image-picker';
 import { View, Text, TouchableOpacity } from 'react-native';
 
 interface VideoSelectStepProps {
-  onSelect: (uri: string) => void;
+  onSelect: (uri: string, duration: number | null | undefined) => void;
 }
 
 export function VideoSelectStep({ onSelect }: VideoSelectStepProps) {
@@ -14,7 +14,7 @@ export function VideoSelectStep({ onSelect }: VideoSelectStepProps) {
     });
 
     if (!result.canceled) {
-      onSelect(result.assets[0].uri);
+      onSelect(result.assets[0].uri, result.assets[0].duration);
     }
   };
 

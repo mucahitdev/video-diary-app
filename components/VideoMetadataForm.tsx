@@ -29,7 +29,7 @@ export function VideoMetadataForm({ onSubmit, initialData }: VideoMetadataFormPr
   });
 
   return (
-    <View className="space-y-4 p-4">
+    <View className="gap-4 space-y-4 p-4">
       <View>
         <Controller
           control={control}

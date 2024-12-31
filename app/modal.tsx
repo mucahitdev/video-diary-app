@@ -13,10 +13,12 @@ export default function ModalScreen() {
   const [step, setStep] = useState<Step>('select');
   const [selectedVideo, setSelectedVideo] = useState<string | null>(null);
   const [croppedVideo, setCroppedVideo] = useState<string | null>(null);
+  const [videoDuration, setVideoDuration] = useState<number | null | undefined>(null);
   const addVideo = useVideoStore((state) => state.addVideo);
 
-  const handleSelect = (uri: string) => {
+  const handleSelect = (uri: string, duration: number | null | undefined) => {
     setSelectedVideo(uri);
+    setVideoDuration(duration);
     setStep('crop');
   };
 
@@ -46,7 +48,11 @@ export default function ModalScreen() {
       <View className="flex-1 bg-gray-50 p-4">
         {step === 'select' && <VideoSelectStep onSelect={handleSelect} />}
         {step === 'crop' && selectedVideo && (
-          <VideoCropStep videoUri={selectedVideo} onCrop={handleCrop} />
+          <VideoCropStep
+            videoUri={selectedVideo}
+            videoDuration={videoDuration}
+            onCrop={handleCrop}
+          />
         )}
         {step === 'metadata' && croppedVideo && (
           <VideoMetadataStep videoUri={croppedVideo} onSave={handleSave} />
